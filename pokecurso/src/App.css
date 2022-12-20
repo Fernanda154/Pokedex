@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased !important;
+}
+html, body, #root {
+width: 100%;
+min-height: 100vh;
+list-style: none;
+display: flex;
+overflow: auto;
+justify-content: center;
+}
