@@ -1,2 +1,2 @@
 # Pokedex
-Pokedex destinada ao mini curso introdutório de ReactJS.
+  Pokedex destinada a ser parte da tentativa de dar um minicurso introdutório de ReactJS.
