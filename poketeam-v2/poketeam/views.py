@@ -16,7 +16,7 @@ import json
 class PokemonViewSet(viewsets.ModelViewSet):
     queryset = Pokemon.objects.all()
     serializer_class = PokemonSerializer
-    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
 
 @api_view(['POST','GET'])
 def create_team(request):
@@ -50,6 +50,9 @@ def create_team(request):
         return Response(status =200,data={'name':pack['name'],'pokemons':poke_list})
 
     elif request.method == 'GET':
+        print("mostrando o user")
+        print(request.headers)
+        print(request.user)
         poketeams = Poketeam.objects.filter(owner=request.user)
 
         serializer = PoketeamSerializer(poketeams,many=True,context={'request':request})
@@ -81,10 +84,14 @@ def register(request):
     username=body["username"]
     password=body["password"]
 
-    user = User(username=username,password=password)
+    print(type(password))
+    user = User(username=username)
+    user.set_password(password)
 
     user.save()
     userResponse=User.objects.get(username=username)
+
+    print(userResponse.check_password(password))
     print(userResponse)
     token=Token.objects.get(user=userResponse)
 

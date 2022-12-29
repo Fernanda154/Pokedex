@@ -25,7 +25,7 @@ SECRET_KEY = '(ao5&@=78qmetkpqg^1p7#5=37(*^1r(1a6m+#48lr45ainhkz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://curiousanimals.herokuapp.com','127.0.0.1:8000','localhost:8000', 'localhost', 'https://10.25.1.202:8000']
+ALLOWED_HOSTS = ['https://curiousanimals.herokuapp.com', '127.0.0.1','127.0.0.1:8000','localhost:8000', 'localhost']
 
 
 # Application definition
@@ -41,15 +41,28 @@ INSTALLED_APPS = [
     'poketeam',
     'rest_framework',
     "corsheaders",
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'rest_framework_simplejwt',
 ]
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': [
+#         'rest_framework.authentication.TokenAuthentication',
+
+#     ]
+# }
+
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
 
     ]
 }
+
+
+
 
 
 MIDDLEWARE = [
